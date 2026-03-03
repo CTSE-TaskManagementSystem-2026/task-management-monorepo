@@ -31,5 +31,7 @@ COPY --from=builder /app/next.config.ts ./next.config.ts
 # Expose the port your Next.js app uses
 EXPOSE 3000
 
+ENV PORT=3000
+ENV HOSTNAME=0.0.0.0
 # Start the application
-CMD ["npm", "start"]
+CMD ["sh","-c","PORT=${PORT} HOSTNAME=${HOSTNAME} npm run start -- -p ${PORT}"]
